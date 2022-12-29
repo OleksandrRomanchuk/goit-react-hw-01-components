@@ -1,34 +1,37 @@
 import PropTypes from 'prop-types';
+import css from './Profile.module.css'
 
 export default function Profile(props) {
     const {userName, tag, location, avatar, stats} = props;
 
-    return <div className="profile">
-        <div className="description">
-            <img
-                src={avatar}
-                alt="User avatar"
-                className="avatar"
-            />
-            <p className="name">{userName}</p>
-            <p className="tag">{tag}</p>
-            <p className="location">{location}</p>
-        </div>
-        <ul className="stats">
-            <li>
-                <span className="label">Followers</span>
-                <span className="quantity">{stats.followers}</span>
-            </li>
-            <li>
-                <span className="label">Views</span>
-                <span className="quantity">{stats.views}</span>
-            </li>
-            <li>
-                <span className="label">Likes</span>
-                <span className="quantity">{stats.likes}</span>
-            </li>
-        </ul>
-    </div>;
+        return <div className={css.profile}>
+                    <div className={css.description}>
+                        <div className={css.avatar__wrapper}>
+                            <img
+                                src={avatar}
+                                alt="User avatar"
+                                className={css.avatar}
+                            />  
+                        </div>
+                        <p className={css.name}>{userName}</p>
+                        <p className={css.tag}>{tag}</p>
+                        <p className={css.location}>{location}</p>
+                    </div>
+                    <ul className={css.stats}>
+                        <li>
+                                <span className={css.label}>Followers</span>
+                                <span className={css.quantity}>{stats.followers}</span>
+                        </li>
+                        <li>
+                                <span className={css.label}>Views</span>
+                                <span className={css.quantity}>{stats.views}</span>
+                        </li>
+                        <li>
+                                <span className={css.label}>Likes</span>
+                                <span className={css.quantity}>{stats.likes}</span>
+                        </li>
+                    </ul>
+                </div>;
 }
 
 Profile.propTypes = {
