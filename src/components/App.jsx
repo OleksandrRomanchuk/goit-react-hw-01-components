@@ -1,53 +1,49 @@
 //========== components ==========
-import AppTitle from "./AppTitle/AppTitle";
-import Section from "./Section/Section";
-import Wrapper from "./Wrapper/Wrapper";
 import Profile from "./Profile/Profile";
-import List from "./List/List";
 import Statistics from "./Statistics/Statistics";
-import FriendListItem from "./FriendListItem/FriendListItem";
+import FriendList from './FriendList/FriendList';
 import TransactionHistory from "./TransactionHistory/TransactionHistory";
 
 //========== data ==========
 import user from 'data/user.json';
 import data from 'data/data.json';
 import friends from 'data/friends.json';
-import transactions  from 'data/transactions.json'
+import transactions from 'data/transactions.json';
 
+//========== App ==========
 export const App = () => {
   return (
     <div
       style={{
         height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
+        display: 'grid',
         justifyContent: 'center',
+        gridTemplateColumns: 'repeat(2, 300px)',
+        gridAutoRows: 450,
+        gridAutoFlow: 'row',
+        gap: 30,
         alignItems: 'center',
         fontSize: 14,
         fontWeight: 500,
         color: '#010101'
       }}
     >
-          <Profile
-            userName={user.username}
-            tag={user.tag}
-            location={user.location}
-            avatar={user.avatar}
-            stats={user.stats} />
+      <Profile
+        userName={user.username}
+        tag={user.tag}
+        location={user.location}
+        avatar={user.avatar}
+        stats={user.stats} />
 
+      <Statistics
+        title="Upload stats"
+        stats={data} />
 
-          <List>
-            <Statistics
-              stats={data} />
-          </List>
+      <FriendList friends={friends} />
 
-          <List>
-            <FriendListItem
-              friends={friends} />
-          </List>
-
-          <TransactionHistory
-            items={transactions} />
+      <TransactionHistory
+        items={transactions} />
+      
     </div>
   );
 };
