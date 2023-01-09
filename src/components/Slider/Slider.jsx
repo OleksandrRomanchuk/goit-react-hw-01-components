@@ -20,15 +20,15 @@ class Slider extends Component {
 
     swipeLeft = () => {
         if (this.state.translate === 0) {
-            this.setState(prevState => prevState.translate -= 450);
+            this.setState(prevState => prevState.translate -= 900);
         } else {
-            this.setState(prevState => prevState.translate += 150);
+            this.setState(prevState => prevState.translate += 300);
         }
     }
 
     swipeRight = () => {
         if (this.state.translate !== -900) {
-            this.setState(prevState => prevState.translate -= 150);
+            this.setState(prevState => prevState.translate -= 300);
         } else {
             this.setState(prevState => prevState.translate = 0);
         }
