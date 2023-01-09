@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Item , Status} from './FriendListItem.styled';
 
 export default function FriendListItem(props) {
-    const { avatar, name, isOnline, theme } = props;
+    const { avatar, name, isOnline} = props;
 
     return <Item>
                 <Status isOnline={ isOnline} />
