@@ -1,18 +1,22 @@
 import PropTypes from 'prop-types';
+import { getRandomHexColor } from 'utils/randomColorFunc';
+import { Title , StatsList, StatItem} from './Statistics.styled';
 
 export default function Statistics(props) {
     const {title,  stats } = props;
     
-    return <section className="statistics">
-                {title && <h2 className="title">{ title}</h2>}
-                <ul className="stat-list">
+    return <section>
+                {title && <Title>{title}</Title>}
+                <StatsList>
                     {stats.map(stat => (
-                        <li className="item" key={stat.id}>
-                            <span className="label">{stat.label}</span>
-                            <span className="percentage">{stat.percentage}%</span>
-                        </li>
+                        <StatItem
+                            key={stat.id}
+                            style={{backgroundColor: getRandomHexColor()}}>
+                                <span>{stat.label}</span>
+                                <span>{stat.percentage}%</span>
+                        </StatItem>
                     ))}
-                </ul>
+                </StatsList>
             </section>;
 }
 
@@ -24,26 +28,3 @@ Statistics.propTypes = {
         percentage: PropTypes.number.isRequired,
     })),
 }
-
-// <section class="statistics">
-//   <h2 class="title">Upload stats</h2>
-
-//   <ul class="stat-list">
-//     <li class="item">
-//       <span class="label">.docx</span>
-//       <span class="percentage">4%</span>
-//     </li>
-//     <li class="item">
-//       <span class="label">.mp3</span>
-//       <span class="percentage">14%</span>
-//     </li>
-//     <li class="item">
-//       <span class="label">.pdf</span>
-//       <span class="percentage">41%</span>
-//     </li>
-//     <li class="item">
-//       <span class="label">.mp4</span>
-//       <span class="percentage">12%</span>
-//     </li>
-//   </ul>
-// </section>
