@@ -1,0 +1,9 @@
+.transaction_history {
+    font-size: 10px;
+    text-align: center;
+}
+
+.transaction_history thead tr {
+    border: 1px solid black;
+}
+
