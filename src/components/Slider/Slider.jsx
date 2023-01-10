@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { SliderContainer, TasksWrapper, SwipeButton } from './Slider.styled';
+import { SliderContainer, TasksWrapper, SwipeButton, Window } from './Slider.styled';
 
 //========== components ==========
 import Profile from "../Profile/Profile";
@@ -12,6 +12,7 @@ import user from 'data/user.json';
 import data from 'data/data.json';
 import friends from 'data/friends.json';
 import transactions from 'data/transactions.json';
+import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 
 class Slider extends Component {
     state = {
@@ -34,28 +35,34 @@ class Slider extends Component {
         }
     }
 
-render() {
+    render() {
     return <SliderContainer>
-                <SwipeButton type="button" onClick={(this.swipeLeft)}>&lt;</SwipeButton>
-                <TasksWrapper position={this.state.translate}>
-                    
-                    <Profile
-                        userName={user.username}
-                        tag={user.tag}
-                        location={user.location}
-                        avatar={user.avatar}
-                        stats={user.stats} />
+                <SwipeButton type="button" onClick={(this.swipeLeft)}>
+                    <BsArrowLeftCircle />
+                </SwipeButton>
+                <Window>
+                    <TasksWrapper position={this.state.translate}>
+                        
+                        <Profile
+                            userName={user.username}
+                            tag={user.tag}
+                            location={user.location}
+                            avatar={user.avatar}
+                            stats={user.stats} />
 
-                    <Statistics
-                        title="Upload stats"
-                        stats={data} />
+                        <Statistics
+                            title="Upload stats"
+                            stats={data} />
 
-                    <FriendList friends={friends} />
+                        <FriendList friends={friends} />
 
-                    <TransactionHistory
-                        items={transactions} />
-                </TasksWrapper>
-                <SwipeButton type="button" onClick={this.swipeRight}>&#62;</SwipeButton>
+                        <TransactionHistory
+                            items={transactions} />
+                    </TasksWrapper>
+                </Window>
+                <SwipeButton type="button" onClick={this.swipeRight}>
+                    <BsArrowRightCircle />
+                </SwipeButton>
             </SliderContainer>;
     }
 }

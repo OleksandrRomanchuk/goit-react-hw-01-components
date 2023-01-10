@@ -4,6 +4,27 @@ export const SliderContainer = styled.div`
     position: relative;
     display: flex;
     justify-content: space-between;
+`;
+
+export const SwipeButton = styled.button`
+    display: inline-block;
+    margin: auto;
+    padding: ${props => props.theme.spacing[4]}px;
+
+    font-size: ${props => props.theme.fontSizes.xl}px;
+    
+    z-index: 1;
+    opacity: 0.3;
+
+    transition: opacity 300ms ease;
+
+    :hover, :focus {
+        opacity: 1;
+    }
+`;
+
+export const Window = styled.div`
+    position: relative;
 
     width: 300px;
     height: 450px;
@@ -13,10 +34,10 @@ export const SliderContainer = styled.div`
 
 export const TasksWrapper = styled.div`
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 0;
 
-    transform: translateX(${props => props.position}px);
+    transform: translateX(${props => props.position}px) translateY(-50%);
 
     display: grid;
     grid-template-columns: repeat(4, 300px);
@@ -27,8 +48,3 @@ export const TasksWrapper = styled.div`
     transition: transform 300ms ease;
 `;
 
-export const SwipeButton = styled.button`
-    font-size: ${props => props.theme.fontSizes.xl}px;
-    font-weight: ${props => props.theme.fontWeights.extraBold};
-    z-index: 1;
-`;
