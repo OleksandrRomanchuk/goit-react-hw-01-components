@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 import { Table, THead, TBody } from './TransactionHistory.styled';
 
-export default function TransactionHistory(props) {
-    const { items } = props;
-
+export default function TransactionHistory({items}) {
     return <Table>
         <THead>
             <tr>
@@ -14,11 +12,11 @@ export default function TransactionHistory(props) {
         </THead>
 
         <TBody>
-            {items.map(item => (
-                <tr key = {item.id}>
-                    <td>{item.type}</td>
-                    <td>{item.amount}</td>
-                    <td>{item.currency}</td>
+            {items.map(({id, type, amount, currency}) => (
+                <tr key = {id}>
+                    <td>{type}</td>
+                    <td>{amount}</td>
+                    <td>{currency}</td>
                 </tr>
             ))}
         </TBody>

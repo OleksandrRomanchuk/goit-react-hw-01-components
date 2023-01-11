@@ -2,18 +2,16 @@ import PropTypes from 'prop-types';
 import { getRandomHexColor } from 'utils/randomColorFunc';
 import { Title , StatsList, StatItem} from './Statistics.styled';
 
-export default function Statistics(props) {
-    const {title,  stats } = props;
-    
+export default function Statistics({title,  stats}) {
     return <section>
                 {title && <Title>{title}</Title>}
                 <StatsList>
-                    {stats.map(stat => (
+                    {stats.map(({id, label, percentage}) => (
                         <StatItem
-                            key={stat.id}
+                            key={id}
                             style={{backgroundColor: getRandomHexColor()}}>
-                                <span>{stat.label}</span>
-                                <span>{stat.percentage}%</span>
+                                <span>{label}</span>
+                                <span>{percentage}%</span>
                         </StatItem>
                     ))}
                 </StatsList>
@@ -22,9 +20,7 @@ export default function Statistics(props) {
 
 Statistics.propTypes = {
     title: PropTypes.string,
-    stats: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
-        percentage: PropTypes.number.isRequired,
-    })),
+    id: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    percentage: PropTypes.number.isRequired,
 }

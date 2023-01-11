@@ -2,9 +2,7 @@ import PropTypes from 'prop-types';
 import FriendListItem from 'components/FriendListItem/FriendListItem';
 import { FriendList } from './FriendList.styled';
 
-export default function List(props) {
-    const { friends } = props;
-
+export default function List({friends}) {
     return <FriendList>
                 {friends.map(({id, avatar, name, isOnline}) => (
                     <FriendListItem

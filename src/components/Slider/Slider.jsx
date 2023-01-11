@@ -67,4 +67,4 @@ class Slider extends Component {
     }
 }
 
-export {Slider}
+export { Slider };
